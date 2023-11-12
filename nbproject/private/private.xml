@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/controllers/DeleteTradeController.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/create-post.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/thread.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/tradingpage.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/controllers/CreateTradeController.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/tradepage.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/manage-trades.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/manage-thread.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/web/manage-threads.jsp</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/dbaccess/MediaDAO.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/model/Post.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/controllers/CreatePostController.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/controllers/DispatcherController.java</file>
+            <file>file:/C:/Users/overw/Documents/DogCatLoverPlatform/src/java/controllers/DeletePostController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/tradepage.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/manage-threads.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/src/java/controllers/LoadAllPostUserController.java</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/thread.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/manage-thread.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/viewprofile.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/src/java/controllers/DispatcherController.java</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/view-profile-user.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/staffpage.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/tradingpage.jsp</file>
+            <file>file:/C:/Users/overw/Desktop/DogCatLoverPlatform_Nguyen/DogCatLoverPlatform/web/about.jsp</file>
+=======
+            <file>file:/C:/Users/Kuuga/Downloads/DogCatLoverPlatform/src/java/controllers/CreatePostController.java</file>
+            <file>file:/C:/Users/Kuuga/Downloads/DogCatLoverPlatform/web/admin.jsp</file>
+            <file>file:/C:/Users/Kuuga/Downloads/DogCatLoverPlatform/src/java/dbaccess/AccountDAO.java</file>
+>>>>>>> e171e003676125de96cd90488e7a930a3436b26f
+>>>>>>> d4b81dae5553be33fdf9681cb69e1724ac048f43
+        </group>
+    </open-files>
+</project-private>

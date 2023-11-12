@@ -1,0 +1,56 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 3, 2023, 10:12:43 PM
+    Author     : overw
+*/
+
+.card-body > p {
+    margin-left: 1rem;
+    color: #333;
+}
+
+svg {
+    display: inline;
+}
+
+.thread-img {
+    margin: 1rem 0;
+}
+
+.comment > p {
+    margin-bottom: 0rem;
+    margin-left: 1rem;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.author > svg {
+    margin: 1.25rem;
+}
+
+.author-container {
+    flex: 1;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.author-info > p {
+    margin: 0;
+}
+
+.post-action {
+    flex: 0.08;
+    display: flex;
+    justify-content: space-between;
+}
+
+.thread-content {
+    margin-top: 1rem;
+}
