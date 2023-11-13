@@ -134,7 +134,6 @@
         <servlet-name>CreateTradeController</servlet-name>
         <servlet-class>controllers.CreateTradeController</servlet-class>
         <multipart-config>
-            <location>C:/Users/overw/Desktop/hehe</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -147,6 +146,24 @@
     <servlet>
         <servlet-name>DeleteTradeController</servlet-name>
         <servlet-class>controllers.DeleteTradeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTradeController</servlet-name>
+        <servlet-class>controllers.UpdateTradeController</servlet-class>
+        <multipart-config>
+            <max-file-size>20848820</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProfileController</servlet-name>
+        <servlet-class>controllers.EditProfileController</servlet-class>
+        <multipart-config>
+            <max-file-size>20848820</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
@@ -279,5 +296,13 @@
     <servlet-mapping>
         <servlet-name>DeleteTradeController</servlet-name>
         <url-pattern>/DeleteTradeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTradeController</servlet-name>
+        <url-pattern>/UpdateTradeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileController</servlet-name>
+        <url-pattern>/EditProfileController</url-pattern>
     </servlet-mapping>
 </web-app>

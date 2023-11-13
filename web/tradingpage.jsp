@@ -135,14 +135,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <div id="carouselExampleIndicators" class="carousel slide">
-                        <ol class="carousel-indicators">
-                            <c:forEach var="url" items="${media.url}" varStatus="loop">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="${loop.index}" class="${loop.index == 0 ? 'active' : ''}"></li>
-                                </c:forEach>
-                        </ol>
                         <c:set var="listMedia" value="${MediaDAO.getAllMedia(trade.id)}" />
                         <div class="carousel-inner">
-                                <c:forEach var="media" items="${listMedia}" varStatus="loop">
+                            <c:forEach var="media" items="${listMedia}" varStatus="loop">
                                 <div class="carousel-item ${loop.index == 0 ? 'active' : ''}">
                                     <div class="card" style="height: 500px">
                                         <img style="object-fit: cover; height: 100%" src="${media.url}" class="card-img-top img-fluid" alt="${media.file_name}">

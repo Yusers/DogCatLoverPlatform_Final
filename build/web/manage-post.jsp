@@ -165,7 +165,7 @@
                             <!-- Thread 1 -->
                             <c:forEach var="post" items="${posts}">
                                 <div class="card shadow p-1 bg-black rounded">
-                                    <div class="card-header custom-title-post" id="thread${post.id}" data-toggle="collapse" data-target="#collapseThread${post.id}" aria-expanded="true" aria-controls="collapseThread${post.id}">
+                                    <div class="card-header custom-title-post" id="trade${post.id}" data-toggle="collapse" data-target="#collapseTrade${post.id}" aria-expanded="true" aria-controls="collapseTrade${post.id}">
                                         <h6>
                                             Bài viết: <strong>${post.title}</strong>
                                         </h6>
@@ -180,7 +180,7 @@
                                         </c:if>
                                     </div>
 
-                                    <div id="collapseThread${post.id}" class="collapse" aria-labelledby="thread${post.id}" data-parent="#threadAccordion">
+                                    <div id="collapseTrade${post.id}" class="collapse" aria-labelledby="trade${post.id}" data-parent="#threadAccordion">
                                         <div class="card-body">
                                             <div class="card shadow p-1 bg-black rounded">
                                                 <div class="card-body">
@@ -204,7 +204,7 @@
                                                     <!-- Thread Actions (e.g., Delete, Edit) -->
                                                     <div class="row d-flex">
                                                         <div class="btn-group col-md-6 d-flex justify-content-start">
-                                                            <a href="DispatcherController?action=thread&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
+                                                            <a href="DispatcherController?action=trade-details&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
                                                             <a href="DispatcherController?action=trade-delete&id=${post.id}" class="btn btn-danger">Xóa</a>
                                                         </div>
                                                         <div class="col-md-2"></div>

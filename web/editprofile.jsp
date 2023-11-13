@@ -146,42 +146,42 @@
                         <div class="col mb-3">
                             <div class="card w-75">
                                 <div class="card-body">
-                                    <div class="e-profile">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-auto mb-3">
-                                                <label for="avatarInput" class="mx-auto" style="width: 140px;">
-                                                    <div id="avatarContainer" class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                        <img id="avatar" src="path/to/default-avatar.jpg" alt="Avatar" style="max-width: 100%; max-height: 100%;">
-                                                    </div>
-                                                </label>
-                                                <input type="file" id="avatarInput" style="display: none;" accept="image/*">
-                                            </div>
-                                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">${us.fullname}</h4>
-                                                    <p class="mb-0">${us.user_id}</p>
-                                                    <div class="text-muted"><small>Last seen 2 hours ago</small></div>
-                                                    <div class="mt-2">
-                                                        <label for="avatarInput" class="btn btn-primary">
-                                                            <i class="fa fa-fw fa-camera"></i>
-                                                            <span>Change Photo</span>
-                                                        </label>
+                                    <form class="form" action="EditProfileController" method="POST" enctype="multipart/form-data">
+                                        <div class="e-profile">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-auto mb-3">
+                                                    <label for="avatarInput" class="mx-auto" style="width: 140px;">
+                                                        <div id="avatarContainer" class="d-flex justify-content-center align-items-center" style="height: 140px; background-color: rgb(233, 236, 239); border-radius: 50%">
+                                                            <img id="avatar" src="${sessionScope.USER.avatar eq 'NULL' ? 'assets/img/149071.png' : sessionScope.USER.avatar}" alt="Avatar" style="max-width: 100%; max-height: 100%; border-radius: 50%">
+                                                        </div>
+                                                    </label>
+                                                    <input type="file" name="image" id="avatarInput" style="display: none;" accept="image/*" onchange="previewImage(this)">
+                                                </div>
+                                                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">${us.fullname}</h4>
+                                                        <p class="mb-0">${us.user_id}</p>
+                                                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
+                                                        <div class="mt-2">
+                                                            <label for="avatarInput" class="btn btn-primary">
+                                                                <i class="fa fa-fw fa-camera"></i>
+                                                                <span>Change Photo</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="text-center text-sm-right">
-                                                <span class="badge badge-secondary text-white">member</span>
-                                                <div class="text-muted"><small>Joined ${us.created_at}</small></div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary text-white">member</span>
+                                                    <div class="text-muted"><small>Joined ${us.created_at}</small></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <ul class="nav nav-tabs">
-                                        <li class="nav-item"><a href class="active nav-link">Settings</a></li>
-                                    </ul>
-                                    <div class="tab-content pt-3">
-                                        <div class="tab-pane active">
-                                            <form class="form" novalidate>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="row">
@@ -202,7 +202,15 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
-                                                                    <input class="form-control" type="text" placeholder="${us.email}" value="${us.email}">
+                                                                    <input class="form-control" type="text" name="email" placeholder="${us.email}" value="${us.email}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Phone</label>
+                                                                    <input class="form-control" type="text" name="phone" placeholder="${us.phone_number}" value="${us.phone_number}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -210,7 +218,7 @@
                                                             <div class="col mb-3">
                                                                 <div class="form-group">
                                                                     <label>About</label>
-                                                                    <textarea class="form-control" rows="5" placeholder="${us.description == "" ? us.description : "My bio"}"></textarea>
+                                                                    <textarea class="form-control" rows="5" name="bio" placeholder="${us.description == "" ? us.description : "My bio"}">${us.description == "" ? us.description : "My bio"}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -223,7 +231,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Current Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••">
+                                                                    <input class="form-control" name="current_password" type="password" placeholder="••••••" value="${us.password}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -231,7 +239,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>New Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••">
+                                                                    <input class="form-control" name="new_password" type="password" placeholder="••••••" value="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -239,7 +247,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                                                    <input class="form-control" type="password" placeholder="••••••"></div>
+                                                                    <input class="form-control" name="confirm_password" type="password" placeholder="••••••" value=""></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -267,9 +275,9 @@
                                                         <button class="btn btn-primary" type="submit">Save Changes</button>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -335,6 +343,28 @@
         </div>
         <!-- Footer End -->
 
+        <script>
+            function previewImage(input) {
+                var avatarContainer = document.getElementById('avatarContainer');
+                var avatarImg = document.getElementById('avatar');
+
+                // Check if a file is selected
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        avatarImg.src = e.target.result;
+                        avatarContainer.style.backgroundColor = 'transparent'; // Optionally remove the background color
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    // Use a default image if no file is selected
+                    avatarImg.src = 'assets/img/149071.png';
+                    avatarContainer.style.backgroundColor = 'transparent'; // Optionally remove the background color
+                }
+            }
+        </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

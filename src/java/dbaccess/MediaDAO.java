@@ -44,6 +44,30 @@ public class MediaDAO {
         }
         return listMedia;
     }
+    
+    public static ArrayList<String> getAllMediaId(int trade_id) throws Exception {
+        ArrayList<String> listMediaId = new ArrayList<>();
+
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [dbo].[Media].[id]\n"
+                    + "FROM [dbo].[Trade_media]\n"
+                    + "JOIN [dbo].[Media] ON [dbo].[Trade_media].media_id = [dbo].[Media].id\n"
+                    + "WHERE [dbo].[Trade_media].trade_id = ?;";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, trade_id);
+            ResultSet rs = pst.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    listMediaId.add(String.valueOf(id));
+                }
+                rs.close(); // Close the ResultSet
+            }
+            cn.close();
+        }
+        return listMediaId;
+    }
 
     public static Media getMediaByName(String file_name) throws Exception {
         Media media = null;
@@ -115,6 +139,26 @@ public class MediaDAO {
             statement.setString(1, url);
             statement.setString(2, file_name);
             statement.executeUpdate();
+        }
+    }
+    
+    public static void updateMedia(int mediaId, String newUrl, String newFileName) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+
+        if (cn != null) {
+            String sql = "UPDATE [dbo].[Media] SET [url] = ?, [file_name] = ? WHERE [id] = ?";
+            
+            try (PreparedStatement statement = cn.prepareStatement(sql)) {
+                statement.setString(1, newUrl);
+                statement.setString(2, newFileName);
+                statement.setInt(3, mediaId);
+
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected == 0) {
+                    throw new IllegalArgumentException("No media record found with media_id: " + mediaId);
+                }
+            }
         }
     }
 

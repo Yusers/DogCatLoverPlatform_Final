@@ -73,7 +73,7 @@ public class UpdatePostController extends HttpServlet {
                     }
                 }
             } else {
-                flag = true;
+                flag = false;
             }
             if (flag) {
                 request.setAttribute("STATUS", true);

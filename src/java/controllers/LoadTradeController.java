@@ -36,11 +36,10 @@ public class LoadTradeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String id = request.getParameter("id").trim();
-            int trade_id = Integer.parseInt(id.toString());
+            int id = Integer.parseInt(request.getParameter("id").trim());
             String edit = request.getParameter("edit");
             String url = "DispatcherController?action=trade-detail-page";
-            Trade trade = TradeDAO.getTrade(trade_id);
+            Trade trade = TradeDAO.getTrade(id);
             Trade_Category cate = Trade_CategoryDAO.getTradeCategory(trade.getCate_id());
             request.setAttribute("AUTHOR", AccountDAO.getAccount(trade.getAuthor_id()));
             if (edit == null || edit.isEmpty()) {

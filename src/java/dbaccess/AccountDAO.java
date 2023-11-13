@@ -24,7 +24,7 @@ public class AccountDAO {
         Account account = null;
         if (cn != null) {
             //b2: viet sql va exec
-            String sql = "SELECT [user_id],[fullname],[email],[password],[phone_number],[description],[role],[status],[created_at],[updated_at]\n"
+            String sql = "SELECT *\n"
                     + "FROM [dbo].[Account]\n"
                     + "WHERE [user_id] = ? AND [password] = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -41,9 +41,10 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String roleID = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
                     Date updatedat = rs.getDate("updated_at");
-                    account = new Account(user_id, name, email, pass, phonenumber, des, roleID, status, createdat, updatedat);
+                    account = new Account(user_id, name, email, pass, phonenumber, des, roleID, status, createdat, updatedat, avatar);
                 }
             }
             cn.close();
@@ -173,9 +174,10 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String role = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
                     Date updatedat = rs.getDate("updated_at");
-                    account = new Account(id, name, email, pass, phone_number, des, role, status, createdat, updatedat);
+                    account = new Account(id, name, email, pass, phone_number, des, role, status, createdat, updatedat, avatar);
                 }
             }
             cn.close();
@@ -274,13 +276,13 @@ public class AccountDAO {
         return list;
     }
     
-    public static int updateProfile(String user_name, String fullname, String email, String description, String password, String phone) throws Exception {
+    public static int updateProfile(String user_name, String fullname, String email, String description, String password, String phone, String img) throws Exception {
         int rs = 0;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
             String sql = "UPDATE [dbo].[Account]\n"
-                    + "SET [user_id] = ?, [fullname] = ?, [email] = ?, [description] = ?, [password] = ?, [phone_number] = ?, [updated_at] = GETDATE()\n"
-                    + "WHERE [user_id] LIKE ? ";
+                    + "SET [user_id] = ?, [fullname] = ?, [email] = ?, [description] = ?, [password] = ?, [phone_number] = ?, [updated_at] = GETDATE(), [avatar] = ?\n"
+                    + "WHERE [user_id] = ? ";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, user_name);
             pst.setString(2, fullname);
@@ -288,7 +290,8 @@ public class AccountDAO {
             pst.setString(4, description);
             pst.setString(5, password);
             pst.setString(6, phone);
-            pst.setString(7, user_name);
+            pst.setString(7, img);
+            pst.setString(8, user_name);
             rs = pst.executeUpdate();
             cn.close();
         }

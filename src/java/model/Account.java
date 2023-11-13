@@ -19,6 +19,7 @@ public class Account {
     private String description;
     private String role;
     private String status;
+    private String avatar;
     private Date created_at;
     private Date updated_at;
 
@@ -40,7 +41,7 @@ public class Account {
         this.phone_number = phone_number;
     }
     
-    public Account(String user_id, String fullname, String email, String password, String phone_number, String description, String role, String status, Date created_at, Date updated_at) {
+    public Account(String user_id, String fullname, String email, String password, String phone_number, String description, String role, String status, Date created_at, Date updated_at, String avatar) {
         this.user_id = user_id;
         this.fullname = fullname;
         this.email = email;
@@ -51,6 +52,7 @@ public class Account {
         this.status = status;
         this.created_at = created_at;
         this.updated_at = updated_at;
+        this.avatar = avatar;
     }
 
     public Account(String user_id, String fullname, String email, String phone_number, String description, String role, String status, Date created_at) {
@@ -88,6 +90,14 @@ public class Account {
         this.email = email;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+    
     public String getPassword() {
         return password;
     }

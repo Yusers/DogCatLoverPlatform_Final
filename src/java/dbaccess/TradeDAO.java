@@ -149,6 +149,25 @@ public class TradeDAO {
         return rs;
     }
     
+    public static int updateTrade(Trade updatedTrade) throws Exception {
+        int rowsAffected = 0;
+
+        try (Connection cn = DBUtils.makeConnection();
+             PreparedStatement pst = cn.prepareStatement("UPDATE [dbo].[Trade] SET [author_id] = ?, [title] = ?, [content] = ?, [status] = ?, [category] = ? WHERE [id] = ?")) {
+
+            pst.setString(1, updatedTrade.getAuthor_id());
+            pst.setString(2, updatedTrade.getTitle());
+            pst.setString(3, updatedTrade.getContent());
+            pst.setString(4, updatedTrade.getStatus());
+            pst.setInt(5, updatedTrade.getCate_id());
+            pst.setInt(6, updatedTrade.getId());
+
+            rowsAffected = pst.executeUpdate();
+        }
+
+        return rowsAffected;
+    }
+    
     public static Trade getTrade(int trade_id) throws Exception {
         Trade trade = null;
         Connection cn = DBUtils.makeConnection();

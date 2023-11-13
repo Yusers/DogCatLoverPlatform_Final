@@ -95,4 +95,9 @@ public class Media {
         this.updated_at = updated_at;
     }
 
+    @Override
+    public String toString() {
+        return "Media{" + "id=" + id + ", url=" + url + ", file_name=" + file_name + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
+    }
+
 }
