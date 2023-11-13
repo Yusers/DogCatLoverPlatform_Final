@@ -186,7 +186,7 @@
                             <c:if test="${not empty post.image}">                            
                                 <img style="height: 22rem; object-fit: scale-down;" src="${post.image}" class="card-img-top thread-img" alt="${post.title}"><br>
                             </c:if>
-                            <pre>
+                            <pre style="width: 100%; text-align: justify; white-space: pre-wrap;">
                                 ${post.content.trim()}
                             </pre>
                             <!--<img src="./assets/img/blog-2.jpg" class="card-img-top thread-img" alt="blog-1"><br>-->
@@ -255,8 +255,11 @@
                                                     <input placeholder="Write a comment..." value="" type="text" class="form-control" aria-label="Sizing example input" disabled aria-describedby="inputGroup-sizing-sm">
                                                     <button class="btn btn-primary mt-2" type="button" onclick="showLoginPrompt()">Comment</button>
                                                 </c:when>
-                                                <c:when test="${us.role eq 'ADMIN' or us.role eq 'STAFF'}">
-                                                    <input placeholder="You are not allowed to comment." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled>
+                                                <c:when test="${post.status eq 'Created' or post.status eq 'Rejected'}">
+                                                    <input placeholder="This post need Approve first" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled>
+                                                </c:when>
+                                                <c:when test="${us.status ne 'Active'}">
+                                                    <input placeholder="You are not allowed to comments" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <input id="commentInput" name="content" required="*" placeholder="Write a comment..." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
