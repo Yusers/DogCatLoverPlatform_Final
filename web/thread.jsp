@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="dbaccess.CommentDAO" %>
+<%@ page import="dbaccess.AccountDAO" %>
 
 
 <!DOCTYPE html>
@@ -137,7 +138,7 @@
         </div>
         <!-- Navbar End -->
         <c:set var="us" value="${sessionScope.USER}"/>
-
+        <c:set var="author" value="${AccountDAO.getAccount(post.author_id)}" />
         <!-- Threads -->
         <div class="container mt-5">
             <nav aria-label="breadcrumb">
@@ -155,7 +156,7 @@
                 <div class="col-md-12">
                     <div class="alert alert-info">
                         <div class="author">
-                            <img class="img-fluid mr-3" style="width: 100px; height: 100px; border-radius: 50%" src="${us.avatar}" />
+                            <img class="img-fluid mr-3" style="width: 100px; height: 100px; border-radius: 50%" src="${author.avatar ne 'NULL' ? 'assets/img/149071.png' : author.avatar}" />
                             <div class="author-container">
                                 <div class="author-info">
                                     <c:if test="${us.role != null}"><h6><a href="DispatcherController?action=manage&actions=viewprofile&usname=${post.author_id}">${post.author_id}</a></h6></c:if>

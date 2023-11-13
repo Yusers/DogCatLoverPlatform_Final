@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import model.Account;
@@ -39,6 +40,8 @@ public class ActionController extends HttpServlet {
             String action = request.getParameter("action");
             String username = request.getParameter("username");
             Account account = AccountDAO.getAccount(username);
+            HttpSession session = request.getSession();
+            Account acc = (Account) session.getAttribute("USER");
 
             if ("delete".equals(action)) {
                 boolean hasPosts = PostDAO.hasPosts(username);
@@ -53,12 +56,20 @@ public class ActionController extends HttpServlet {
                 }
                 int deleteAccount = AccountDAO.deleteAccount(username);
                 if (deleteAccount > 0) {
-                    response.sendRedirect("DispatcherController?action=staff-manage");
+                    if (acc.getRole().equals("STAFF")) {
+                        response.sendRedirect("DispatcherController?action=staff-manage");
+                    } else {
+                        response.sendRedirect("DispatcherController?action=manage");
+                    }
                 }
             } else if ("ban".equals(action)) {
                 int banAccount = AccountDAO.banAccount(username);
                 if (banAccount > 0) {
-                    response.sendRedirect("DispatcherController?action=staff-manage");
+                    if (acc.getRole().equals("STAFF")) {
+                        response.sendRedirect("DispatcherController?action=staff-manage");
+                    } else {
+                        response.sendRedirect("DispatcherController?action=manage");
+                    }
                 }
             }
         } catch (Exception e) {

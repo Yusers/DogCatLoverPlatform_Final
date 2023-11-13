@@ -165,6 +165,10 @@
             <file-size-threshold>1048576</file-size-threshold>
         </multipart-config>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateProfileUserController</servlet-name>
+        <servlet-class>controllers.UpdateProfileUserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/DispatcherServlet</url-pattern>
@@ -304,5 +308,9 @@
     <servlet-mapping>
         <servlet-name>EditProfileController</servlet-name>
         <url-pattern>/EditProfileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileUserController</servlet-name>
+        <url-pattern>/UpdateProfileUserController</url-pattern>
     </servlet-mapping>
 </web-app>

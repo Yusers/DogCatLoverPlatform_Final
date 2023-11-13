@@ -24,6 +24,7 @@
         <!-- Flaticon Font -->
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!-- Libraries Stylesheet -->
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
@@ -159,6 +160,13 @@
                                     <p class="card-text">${listOfStaff.size()}</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <h2 class="mb-4">Tổng số bài viết đã được duyệt của từng tháng</h2>
+                            <p class="ml-4"><strong>Tổng bài tất cả: ${requestScope.TOTAL}</strong></p>
+                            <canvas id="postChart" width="400" height="200"></canvas>
                         </div>
                     </div>
                     <div class="card">
@@ -374,6 +382,48 @@
                     </div>
                 </div>-->
 
+
+        <script>
+            // Use JSTL to retrieve data from the servlet
+            var postCounts = ${MONTHLY_COUNTS}; // Array of post counts
+            console.log(postCounts); // Check the console for the output
+
+
+            // Get the context of the canvas element
+            var ctx = document.getElementById('postChart').getContext('2d');
+
+            // Create the chart
+            var postChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ${MONTHLY_COUNTS_LABELS}, // Array of month labels
+                    datasets: [{
+                            label: "Total Posts",
+                            data: postCounts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Posts'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -382,6 +432,7 @@
         <script src="lib/tempusdominus/js/moment.min.js"></script>
         <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 
         <!-- Contact Javascript File -->
         <script src="mail/jqBootstrapValidation.min.js"></script>

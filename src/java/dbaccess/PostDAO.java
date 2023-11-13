@@ -23,7 +23,7 @@ public class PostDAO {
         ArrayList<Post> posts = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT [id], [title], [category_id], [author_id], [content], [status], [rejected_reason], [created_at], [updated_at]\n"
+            String sql = "SELECT [id], [title], [category_id], [author_id], [content], [status], [rejected_reason], [created_at], [updated_at], [image]\n"
                     + "FROM [dbo].[Post]\n"
                     + "WHERE [status] = 'Created'";
             Statement st = cn.createStatement();

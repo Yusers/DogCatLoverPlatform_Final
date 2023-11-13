@@ -50,6 +50,26 @@
             .custom-input {
                 border: none;
             }
+
+            .custom-input-img {
+                position: relative;
+            }
+
+            .custom-input-img:hover::after {
+                content: 'Click here to edit';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 18px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .custom-input-img:hover img {
+                filter: brightness(70%); /* Adjust the brightness level as needed */
+            }
         </style>
     </head>
 
@@ -205,7 +225,7 @@
                                 <label for="inputfile"><strong>Chỉnh sửa hoặc thêm hình ảnh tại đây</strong></label>
                                 <div class="text-center">
                                     <label for="inputfile">
-                                        <div class="d-flex justify-content-center align-items-center rounded">
+                                        <div class="d-flex justify-content-center align-items-center rounded custom-input-img">
                                             <img id="previewImage" style="height: 22rem; object-fit: scale-down;" src="${empty post.image ? 'assets/img/no-img.jpg' : post.image}" class="card-img-top thread-img" alt="${post.title}">
                                         </div>
                                         <input name="image" type="file" class="custom-file-input" id="inputfile" onchange="previewFile()">

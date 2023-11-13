@@ -155,7 +155,7 @@
                             <c:if test="${sessionScope.USER.role eq 'ADMIN'}">
                                 <a class="dropdown-item" href="DispatcherController?action=manage">Dashboard</a>
                             </c:if>
-                            <c:if test="${us.role eq 'STAFF'}">
+                            <c:if test="${sessionScope.USER.role eq 'STAFF'}">
                                 <a class="dropdown-item" href="DispatcherController?action=staff-manage">Dash board</a>
                             </c:if>
                             <a class="dropdown-item" href="DispatcherController?action=my-post">My Posts</a>
@@ -229,7 +229,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">                            
-                            <img style="width: 100px; height: 100px; border-radius: 50%" src="${sessionScope.USER.avatar ne 'NULL'? sessionScope.USER.avatar : 'assets/img/149071.png'}" alt=""/>
+                            <img style="width: 100px; height: 100px; border-radius: 50%" src="${(sessionScope.USER.avatar ne 'NULL' && not empty sessionScope.USER.avatar)? sessionScope.USER.avatar : 'assets/img/149071.png'}" alt=""/>
                         </div>
                     </div>
                     <div class="col-md-6">

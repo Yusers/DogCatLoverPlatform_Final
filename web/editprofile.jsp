@@ -120,16 +120,6 @@
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="DispatcherController?action=forums" class="nav-item nav-link">Forums</a>
                         <a href="DispatcherController?action=trade" class="nav-item nav-link">Trade</a>
-                        <!--                        
-                        <div class="nav-item dropdown">
-                            <a href="tradepage.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown">Trade</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="#" class="dropdown-item">Dog</a>
-                                <a href="#" class="dropdown-item">Cat</a>
-                                <a href="#" class="dropdown-item">Items</a>
-                            </div>
-                        </div>
-                        -->
                         <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                     </div>
 
@@ -161,7 +151,6 @@
                                                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                                                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">${us.fullname}</h4>
                                                         <p class="mb-0">${us.user_id}</p>
-                                                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                                                         <div class="mt-2">
                                                             <label for="avatarInput" class="btn btn-primary">
                                                                 <i class="fa fa-fw fa-camera"></i>
@@ -172,7 +161,7 @@
                                                 </div>
 
                                                 <div class="text-center text-sm-right">
-                                                    <span class="badge badge-secondary text-white">member</span>
+                                                    <p class="btn bg-success text-light">${us.role}</p>
                                                     <div class="text-muted"><small>Joined ${us.created_at}</small></div>
                                                 </div>
                                             </div>

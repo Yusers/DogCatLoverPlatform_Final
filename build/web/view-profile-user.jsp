@@ -199,16 +199,6 @@
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="DispatcherController?action=forums" class="nav-item nav-link">Forums</a>
                         <a href="DispatcherController?action=trade" class="nav-item nav-link">Trade</a>
-                        <!--                        
-                        <div class="nav-item dropdown">
-                            <a href="tradepage.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown">Trade</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="#" class="dropdown-item">Dog</a>
-                                <a href="#" class="dropdown-item">Cat</a>
-                                <a href="#" class="dropdown-item">Items</a>
-                            </div>
-                        </div>
-                        -->
                         <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                     </div>
 
@@ -219,16 +209,17 @@
         <!-- Profile Start -->
         <div class="container emp-profile">
             <form action="" method="post">
+                <c:set var="user" value="${requestScope.MEMBER}" />
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">                            
-                            <img style="width: 100px; height: 100px; border-radius: 50%" src="${sessionScope.USER.avatar ne 'NULL'? sessionScope.USER.avatar : 'assets/img/149071.png'}" alt=""/>
+                            <img style="width: 100px; height: 100px; border-radius: 50%" src="${(user.avatar ne 'NULL' && not empty user.avatar)? user.avatar : 'assets/img/149071.png'}" alt=""/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
                             <h5>
-                                ${requestScope.USER.user_id}
+                                ${user.user_id}
                             </h5>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">

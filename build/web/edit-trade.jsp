@@ -34,7 +34,31 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+            .carousel-item {
+                position: relative;
+            }
 
+            .card {
+                position: relative;
+            }
+
+            .card:hover::after {
+                content: 'Click here to edit';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .card:hover img {
+                filter: brightness(70%); /* Adjust the brightness level as needed */
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <!-- Topbar Start -->
@@ -149,15 +173,15 @@
                     <datalist id="datalistOptions">
                         <c:forEach var="c" items="${categorys}">
                             <option value="${c.name}">
-                        </c:forEach>
+                            </c:forEach>
                     </datalist>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
                         <div id="carouselExampleIndicators" class="carousel slide col-12">
                             <div class="form-floating">
-                                <label for="addimg">Chọn thêm ảnh</label>
-                                <input id="addimg" type="file" name="images" multiple="true"/>
+                                <label for="addimg">Chọn thêm ảnh hoặc bạn có thể bấm vào ảnh dưới để chỉnh</label>
+                                <input class="ml-3" id="addimg" type="file" name="images" multiple="true"/>
                             </div>
                             <c:set var="listMedia" value="${MediaDAO.getAllMedia(trade.id)}" />
                             <c:set var="listMediaId" value="${MediaDAO.getAllMediaId(trade.id)}" />
