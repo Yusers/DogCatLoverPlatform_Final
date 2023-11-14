@@ -142,7 +142,7 @@
                                                 <div class="col-12 col-sm-auto mb-3">
                                                     <label for="avatarInput" class="mx-auto" style="width: 140px;">
                                                         <div id="avatarContainer" class="d-flex justify-content-center align-items-center" style="height: 140px; background-color: rgb(233, 236, 239); border-radius: 50%">
-                                                            <img id="avatar" src="${sessionScope.USER.avatar eq 'NULL' ? 'assets/img/149071.png' : sessionScope.USER.avatar}" alt="Avatar" style="max-width: 100%; max-height: 100%; border-radius: 50%">
+                                                            <img id="avatar" src="${(us.avatar eq 'NULL' && empty us.avatar) ? 'assets/img/149071.png' : us.avatar}" alt="Avatar" style="max-width: 100%; max-height: 100%; border-radius: 50%">
                                                         </div>
                                                     </label>
                                                     <input type="file" name="image" id="avatarInput" style="display: none;" accept="image/*" onchange="previewImage(this)">

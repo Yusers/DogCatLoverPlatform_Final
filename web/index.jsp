@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="dbaccess.TradeDAO" %>
+<%@ page import="dbaccess.MediaDAO" %>
 <!DOCTYPE html>
 <html>
 
@@ -27,13 +28,9 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
-
-
     </head>
 
     <body>
-
-
         <!-- Topbar Start -->
         <div class="container-fluid">
             <div class="row bg-secondary py-2 px-lg-5">
@@ -180,10 +177,18 @@
             </div>
             <div class="row pb-3">
                 <c:forEach var="t" items="${TradeDAO.getAllTrade()}" >
-                    <c:if test="${t.id < 5}">
+                    <c:if test="${t.id < 6 && t.status eq 'Approved'}">
                         <div class="col-lg-4 mb-4">
                             <div class="card border-0 mb-2">
-                                <img class="card-img-top" src="${t.image}" alt="">
+                                <c:set var="media" value="${MediaDAO.getFirstMedia(t.id)}" />
+                                <c:choose>
+                                    <c:when test="${not empty media.url}">
+                                        <img class="card-img-top img-fluid" style="object-fit: cover;" src="${media.url}" alt="${trade.title}">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img class="card-img-top img-fluid" src="assets/img/no-image.jpg" alt="${trade.title}">
+                                    </c:otherwise>
+                                </c:choose>
                                 <div class="card-body bg-light p-4">
                                     <h4 class="card-title text-truncate">${t.title}</h4>
                                     <div class="d-flex mb-3">

@@ -102,7 +102,7 @@ public class AccountDAO {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Account> list = new ArrayList<>();
         if (cn != null) {
-            String sql = "SELECT [user_id],[fullname],[email],[phone_number],[description],[role],[status],[created_at]\n"
+            String sql = "SELECT *\n"
                     + "FROM [dbo].[Account]\n"
                     + "WHERE [role] LIKE 'MEMBER'";
             Statement st = cn.createStatement();
@@ -116,8 +116,9 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String role = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
-                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat);
+                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat, avatar);
                     list.add(account);
                 }
             }
@@ -130,7 +131,7 @@ public class AccountDAO {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Account> list = new ArrayList<>();
         if (cn != null) {
-            String sql = "SELECT [user_id],[fullname],[email],[phone_number],[description],[role],[status],[created_at]\n"
+            String sql = "SELECT *\n"
                     + "FROM [dbo].[Account]\n"
                     + "WHERE [role] LIKE 'STAFF'";
             Statement st = cn.createStatement();
@@ -144,8 +145,9 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String role = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
-                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat);
+                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat, avatar);
                     list.add(account);
                 }
             }
@@ -221,7 +223,7 @@ public class AccountDAO {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Account> list = new ArrayList<>();
         if (cn != null) {
-            String sql = "SELECT [user_id],[fullname],[email],[phone_number],[description],[role],[status],[created_at]\n"
+            String sql = "SELECT *\n"
                     + "FROM [dbo].[Account]\n"
                     + "WHERE [user_id] LIKE ? OR [fullname] LIKE ? AND [role] LIKE 'STAFF'";
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -237,8 +239,9 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String role = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
-                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat);
+                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat, avatar);
                     list.add(account);
                 }
             }
@@ -251,7 +254,7 @@ public class AccountDAO {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Account> list = new ArrayList<>();
         if (cn != null) {
-            String sql = "SELECT [user_id],[fullname],[email],[phone_number],[description],[role],[status],[created_at]\n"
+            String sql = "SELECT *\n"
                     + "FROM [dbo].[Account]\n"
                     + "WHERE ([fullname] LIKE ?) AND [role] = 'MEMBER'";
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -266,8 +269,9 @@ public class AccountDAO {
                     String des = rs.getString("description");
                     String role = rs.getString("role");
                     String status = rs.getString("status");
+                    String avatar = rs.getString("avatar");
                     Date createdat = rs.getDate("created_at");
-                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat);
+                    Account account = new Account(id, name, email, phone_number, des, role, status, createdat, avatar);
                     list.add(account);
                 }
             }

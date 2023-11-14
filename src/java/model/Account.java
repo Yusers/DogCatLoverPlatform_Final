@@ -55,7 +55,7 @@ public class Account {
         this.avatar = avatar;
     }
 
-    public Account(String user_id, String fullname, String email, String phone_number, String description, String role, String status, Date created_at) {
+    public Account(String user_id, String fullname, String email, String phone_number, String description, String role, String status, Date created_at, String avatar) {
         this.user_id = user_id;
         this.fullname = fullname;
         this.email = email;
@@ -64,6 +64,7 @@ public class Account {
         this.role = role;
         this.status = status;
         this.created_at = created_at;
+        this.avatar = avatar;
     }
       
     public String getUser_id() {

@@ -45,6 +45,7 @@ public class EditProfileController extends HttpServlet {
             String current_password = request.getParameter("current_password");
             String new_password = request.getParameter("new_password");
             String confirm_password = request.getParameter("confirm_password");
+            HttpSession session = request.getSession();
 
             Account account = AccountDAO.getAccount(username);
 //            if(account != null) {
@@ -67,6 +68,8 @@ public class EditProfileController extends HttpServlet {
                     part.write(filePath);
                     String contextPath = request.getContextPath();
                     imageUrl = "http://localhost:8080" + contextPath + "/img/" + fileName;
+                    AccountDAO.updateProfile(username, name, email, description, current_password, phone, imageUrl);
+                    session.setAttribute("USER", AccountDAO.getAccount(username));
                 } else {
                     // User did not upload a file
                     imageUrl = "NULL"; // or imageUrl = ""; // Set to a default value
@@ -91,7 +94,6 @@ public class EditProfileController extends HttpServlet {
                 } else if (new_password.isEmpty()) {
                     int rs = AccountDAO.updateProfile(username, name, email, description, current_password, phone, imageUrl);
                     if (rs > 0) {
-                        HttpSession session = request.getSession();
                         session.setAttribute("USER", AccountDAO.getAccount(username));
                         response.sendRedirect("viewprofile.jsp");
                     } else {
@@ -107,7 +109,6 @@ public class EditProfileController extends HttpServlet {
                     } else {
                         int rs = AccountDAO.updateProfile(username, name, email, description, new_password, phone, imageUrl);
                         if (rs > 0) {
-                            HttpSession session = request.getSession();
                             session.setAttribute("USER", AccountDAO.getAccount(username));
                             response.sendRedirect("viewprofile.jsp");
                         } else {

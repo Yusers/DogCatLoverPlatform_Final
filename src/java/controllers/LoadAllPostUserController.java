@@ -43,6 +43,7 @@ public class LoadAllPostUserController extends HttpServlet {
             if (us != null && !us.isEmpty()) {
                 listPost = PostDAO.getAllPostByAuthor(us);
                 request.setAttribute("AUTHOR", us);
+                url = "DispatcherController?action=my-trade";
             } else {
                 HttpSession session = request.getSession();
                 Account author = (Account) session.getAttribute("USER");

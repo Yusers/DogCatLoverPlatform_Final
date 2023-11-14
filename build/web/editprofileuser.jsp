@@ -121,16 +121,6 @@
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="DispatcherController?action=forums" class="nav-item nav-link">Forums</a>
                         <a href="DispatcherController?action=trade" class="nav-item nav-link">Trade</a>
-                        <!--                        
-                        <div class="nav-item dropdown">
-                            <a href="tradepage.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown">Trade</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="#" class="dropdown-item">Dog</a>
-                                <a href="#" class="dropdown-item">Cat</a>
-                                <a href="#" class="dropdown-item">Items</a>
-                            </div>
-                        </div>
-                        -->
                         <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                     </div>
 
@@ -153,7 +143,7 @@
                                                 <div class="col-12 col-sm-auto mb-3">
                                                     <label for="avatarInput" class="mx-auto" style="width: 140px;">
                                                         <div id="avatarContainer" class="d-flex justify-content-center align-items-center" style="height: 140px; background-color: rgb(233, 236, 239); border-radius: 50%;">
-                                                            <img id="avatar" src="${us.avatar eq 'NULL' ? 'assets/img/149071.png' : us.avatar}" alt="Avatar" style="max-width: 100%; max-height: 100%; border-radius: 50%;">
+                                                            <img id="avatar" src="${(us.avatar eq 'NULL' or empty us.avatar) ? 'assets/img/149071.png' : us.avatar}" alt="Avatar" style="max-width: 100%; max-height: 100%; border-radius: 50%;">
                                                         </div>
                                                     </label>
                                                 </div>

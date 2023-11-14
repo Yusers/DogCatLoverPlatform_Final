@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="model.Account" %>
 <%@page import="dbaccess.Post_CategoryDAO" %>
-        <c:set var="listOfPost" value="${requestScope.POSTS}" />
+<c:set var="listOfPost" value="${requestScope.POSTS}" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -175,7 +175,6 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <input type="hidden" name="btn" value="reject" />
                                                             <input type="hidden" name="action" value="handle-post" />
                                                             <input type="hidden" name="id" value="${post.id}"/>
                                                             <div class="form-group">
@@ -184,7 +183,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" value="reject" class="btn btn-danger">Từ chối</button>
+                                                            <button type="submit" value="reject" name="btn" class="btn btn-danger">Từ chối</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                                         </div>
                                                     </form>

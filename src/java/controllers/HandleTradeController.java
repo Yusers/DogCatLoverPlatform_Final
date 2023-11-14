@@ -35,8 +35,8 @@ public class HandleTradeController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String btn = request.getParameter("btn");
             String reason = request.getParameter("reason");
+            String i = request.getParameter("i");
             int id = Integer.parseInt(request.getParameter("id").trim());
-            Trade trade = TradeDAO.getTrade(id);
             String url = "DispatcherController?action=trade&status=created";
             if (btn != null && !btn.isEmpty()) {
                 if ("approve".equals(btn)) {
@@ -47,8 +47,12 @@ public class HandleTradeController extends HttpServlet {
                     //Hiển lỗi
                 }
             }
+            if (i.equals("true")) {
+                String user_id = request.getParameter("us");
+                url = "DispatcherController?action=my-post&us=" + user_id.trim();
+            }
             request.getRequestDispatcher(url).forward(request, response);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

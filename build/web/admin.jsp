@@ -31,7 +31,6 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
-
     </head>
     <body>
         <!-- Topbar Start -->
@@ -119,16 +118,6 @@
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="DispatcherController?action=forums" class="nav-item nav-link">Forums</a>
                         <a href="DispatcherController?action=trade" class="nav-item nav-link">Trade</a>
-                        <!--                        
-                        <div class="nav-item dropdown">
-                            <a href="tradepage.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown">Trade</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="#" class="dropdown-item">Dog</a>
-                                <a href="#" class="dropdown-item">Cat</a>
-                                <a href="#" class="dropdown-item">Items</a>
-                            </div>
-                        </div>
-                        -->
                         <a href="#" class="nav-item nav-link">Contact</a>
                     </div>
 
@@ -183,6 +172,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Staff ID</th>
                                             <th>Staff Name</th>
                                             <th>Staff Email</th>
@@ -195,6 +185,11 @@
                                         <!-- Rows for members go here -->
                                         <c:forEach var="staff" items="${staffs}">
                                             <tr>
+                                                <td>
+                                                    <a href="DispatcherController?action=manage&actions=viewprofile&usname=${staff.user_id}">
+                                                        <img src="avatar_url_here" alt="Staff Avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+                                                    </a>
+                                                </td>
                                                 <td>${staff.user_id}</td>
                                                 <td><a href="DispatcherController?action=manage&actions=viewprofile&usname=${staff.user_id}">${staff.fullname}</a></td>
                                                 <td>${staff.email}</td>
@@ -222,6 +217,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Staff ID</th>
                                             <th>Staff Name</th>
                                             <th>Staff Email</th>
@@ -234,6 +230,11 @@
                                         <!-- Rows for members go here -->
                                         <c:forEach var="s" items="${listOfStaff}">
                                             <tr>
+                                                <td>
+                                                    <a href="DispatcherController?action=manage&actions=viewprofile&usname=${s.user_id}">
+                                                        <img src="${(s.avatar ne 'NULL' && not empty s.avatar)? s.avatar : 'assets/img/149071.png'}" alt="Staff Avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+                                                    </a>
+                                                </td>
                                                 <td>${s.user_id}</td>
                                                 <td><a href="DispatcherController?action=manage&actions=viewprofile&usname=${s.user_id}">${s.fullname}</a></td>
                                                 <td>${s.email}</td>
@@ -271,6 +272,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Member ID</th>
                                             <th>Member Name</th>
                                             <th>Member Email</th>
@@ -283,6 +285,11 @@
                                         <!-- Rows for members go here -->
                                         <c:forEach var="member" items="${members}">
                                             <tr>
+                                                <td>
+                                                    <a href="DispatcherController?action=manage&actions=viewprofile&usname=${member.user_id}">
+                                                        <img src="${(member.avatar ne 'NULL' && not empty member.avatar)? member.avatar : 'assets/img/149071.png'}" alt="Staff Avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+                                                    </a>
+                                                </td>
                                                 <td>${member.user_id}</td>
                                                 <td><a href="DispatcherController?action=manage&actions=viewprofile&usname=${member.user_id}">${member.fullname}</a></td>
                                                 <td>${member.email}</td>
@@ -310,6 +317,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>Member ID</th>
                                             <th>Member Name</th>
                                             <th>Member Email</th>
@@ -322,6 +330,11 @@
                                         <!-- Rows for members go here -->
                                         <c:forEach var="m" items="${listOfMember}">
                                             <tr>
+                                                <td>
+                                                    <a href="DispatcherController?action=manage&actions=viewprofile&usname=${m.user_id}">
+                                                        <img src="${(m.avatar ne 'NULL' && not empty m.avatar)? m.avatar : 'assets/img/149071.png'}" alt="Staff Avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+                                                    </a>
+                                                </td>
                                                 <td>${m.user_id}</td>
                                                 <td><a href="DispatcherController?action=manage&actions=viewprofile&usname=${m.user_id}">${m.fullname}</a></td>
                                                 <td>${m.email}</td>

@@ -166,7 +166,7 @@
                                     <c:forEach var="p" items="${requestScope.POSTS}">
                                         <c:if test="${p.cate_id eq c.id}">
                                             <c:set var="hasPosts" value="true" />
-                                            <li class="list-group-item"><a href="DispatcherController?action=thread&id=${p.id}">${p.title}</a></li>
+                                            <li class="list-group-item"><a href="DispatcherController?action=thread&id=${p.id}">${p.title} | tác giả : ${p.author_id}</a></li>
                                             </c:if>
                                         </c:forEach>
                                         <c:if test="${not hasPosts}">

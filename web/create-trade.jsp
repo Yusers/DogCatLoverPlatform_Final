@@ -49,24 +49,25 @@
                                     <i class="fa fa-user"></i> Log in
                                 </a>
                             </c:when>
-                            <c:otherwise>
+                            <c:when test="${us != null}">
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-user"></i> ${us.user_id}
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="viewprofile.jsp">View Profile</a>
-                                        <c:if test="${us.role eq 'ADMIN'}">
+                                        <c:if test="${us.role == 'ADMIN'}">
                                             <a class="dropdown-item" href="DispatcherController?action=manage">Dashboard</a>
                                         </c:if>
                                         <c:if test="${us.role eq 'STAFF'}">
                                             <a class="dropdown-item" href="DispatcherController?action=staff-manage">Dash board</a>
                                         </c:if>
                                         <a class="dropdown-item" href="DispatcherController?action=my-post">My Posts</a>
+                                        <a class="dropdown-item" href="LoadConversationController">Chat</a>
                                         <a class="dropdown-item" href="DispatcherController?action=logout">Log out</a>
                                     </div>
                                 </div>
-                            </c:otherwise>
+                            </c:when>
                         </c:choose>
                     </div>
                 </div>
@@ -122,38 +123,45 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 style="color: red;">${empty requestScope.ERR_CONTENT? 'Tạo bài Trao đổi và mua bán' : requestScope.ERR_CONTENT}</h1>
-                    <form action="CreateTradeController" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="author_id" value="${us.user_id}" />
-                        <div class="form-group">
-                            <label for="title">Tiêu đề</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề bài viết">
-                        </div>
-                        <c:set var="categorys" value="${Trade_CategoryDAO.getAllTradeCate()}"/>
-                        <div class="form-group">
-                            <label for="exampleDataList" class="form-label">Loại bài viết về</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" name="category" placeholder="Nhập thể loại bài viết...">
-                            <datalist id="datalistOptions">
-                                <c:forEach var="c" items="${categorys}">
-                                    <option value="${c.name}">
-                                    </c:forEach>
-                            </datalist>
-                        </div>
-                        <div class="form-group">
-                            <label for="images">Chọn nhiều hình ảnh</label>
-                            <input type="file" class="form-control-file" id="images" name="images[]" multiple>
-                            <br/>
-                            <button type="button" onclick="previewFiles()" class="btn btn-primary col-4" data-toggle="modal" data-target="#filePreviewModal">
-                                Xem trước hình ảnh
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <label for="content">Nội dung bài viết</label>
-                            <textarea class="form-control" name="content" id="content" rows="4" placeholder="Nhập nội dung bài viết..."></textarea>
+                    <c:choose>
+                        <c:when test="${us.status ne 'Active' or empty us.user_id}">
+                            <h1>Bạn không có quyền vào trang này</h1>
+                        </c:when>
+                        <c:otherwise>
+                            <h1 style="color: red;">${empty requestScope.ERR_CONTENT? 'Tạo bài Trao đổi và mua bán' : requestScope.ERR_CONTENT}</h1>
+                            <form action="CreateTradeController" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="author_id" value="${us.user_id}" />
+                                <div class="form-group">
+                                    <label for="title">Tiêu đề</label>
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="Nhập tiêu đề bài viết">
+                                </div>
+                                <c:set var="categorys" value="${Trade_CategoryDAO.getAllTradeCate()}"/>
+                                <div class="form-group">
+                                    <label for="exampleDataList" class="form-label">Loại bài viết về</label>
+                                    <input required="" class="form-control" list="datalistOptions" id="exampleDataList" name="category" placeholder="Nhập thể loại bài viết...">
+                                    <datalist id="datalistOptions">
+                                        <c:forEach var="c" items="${categorys}">
+                                            <option value="${c.name}">
+                                            </c:forEach>
+                                    </datalist>
+                                </div>
+                                <div class="form-group">
+                                    <label for="images">Chọn nhiều hình ảnh</label>
+                                    <input type="file" class="form-control-file" id="images" name="images[]" multiple>
+                                    <br/>
+                                    <button type="button" onclick="previewFiles()" class="btn btn-primary col-4" data-toggle="modal" data-target="#filePreviewModal">
+                                        Xem trước hình ảnh
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Nội dung bài viết</label>
+                                    <textarea class="form-control" name="content" id="content" rows="4" placeholder="Nhập nội dung bài viết..."></textarea>
 
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
