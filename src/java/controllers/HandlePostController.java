@@ -35,7 +35,6 @@ public class HandlePostController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String btn = request.getParameter("btn");
             String reason = request.getParameter("reason");
-            String i = request.getParameter("i");
             int id = Integer.parseInt(request.getParameter("id"));
             Post post = PostDAO.getPost(id);
             String user_id = request.getParameter("us");
@@ -48,10 +47,6 @@ public class HandlePostController extends HttpServlet {
                 } else {
                     //Hiển lỗi
                 }
-            }
-            
-            if(i.equals("true")) {
-                url = "DispatcherController?action=my-post&us=" + user_id.trim();
             }
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {

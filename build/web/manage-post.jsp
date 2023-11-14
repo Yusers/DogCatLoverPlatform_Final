@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manage-threads
-    Created on : Oct 11, 2023, 12:30:58 AM
-    Author     : overw
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="dbaccess.Post_CategoryDAO" %>
@@ -205,16 +199,8 @@
                                                     <!-- Thread Actions (e.g., Delete, Edit) -->
                                                     <div class="row d-flex">
                                                         <div class="btn-group col-md-6 d-flex justify-content-start">
-                                                            <c:choose>
-                                                                <c:when test="${not empty author}">
-                                                                    <a class="btn btn-success" href="DispatcherController?action=handle-trade&btn=approve&id=${post.id}&i=true&us=${post.author_id}"}>Chấp nhận</a>
-                                                                    <button class="btn btn-danger" data-toggle="modal" data-target="#rejectTradeModal${post.id}">Từ chối</button>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <a href="DispatcherController?action=trade-details&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
-                                                                    <a href="DispatcherController?action=trade-delete&id=${post.id}" class="btn btn-danger">Xóa</a>
-                                                                </c:otherwise>
-                                                            </c:choose>
+                                                            <a href="DispatcherController?action=trade-details&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
+                                                            <a href="DispatcherController?action=trade-delete&id=${post.id}" class="btn btn-danger">Xóa</a>
                                                         </div>
                                                         <div class="col-md-2"></div>
                                                         <div class="col-md-4 d-flex align-bottom justify-content-end">
@@ -310,16 +296,8 @@
                                                     <!-- Thread Actions (e.g., Delete, Edit) -->
                                                     <div class="row">
                                                         <div class="btn-group col-md-6 d-flex justify-content-start">
-                                                            <c:choose>
-                                                                <c:when test="${not empty author}">
-                                                                    <a class="btn btn-success" href="DispatcherController?action=handle-post&btn=approve&id=${post.id}&i=true&us=${post.author_id}"}>Chấp nhận</a>
-                                                                    <button class="btn btn-danger" data-toggle="modal" data-target="#rejectPostModal${post.id}">Từ chối</button>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <a href="DispatcherController?action=trade-details&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
-                                                                    <a href="DispatcherController?action=trade-delete&id=${post.id}" class="btn btn-danger">Xóa</a>
-                                                                </c:otherwise>
-                                                            </c:choose>
+                                                            <a href="DispatcherController?action=thread&id=${post.id}&edit=true" class="btn btn-primary">Chỉnh sửa</a>
+                                                            <a href="DispatcherController?action=thread-delete&id=${post.id}" class="btn btn-danger">Xóa</a>
                                                         </div>
                                                         <div class="col-md-2"></div>
                                                         <div class="col-md-4">
